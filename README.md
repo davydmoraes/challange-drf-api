@@ -1,8 +1,12 @@
-# Challenge Django Rest Framework
+# Challenge Server Side
 
 API responsável pelas requisições solicidatas no desafio de gerenciamento de estações de armazenamento.
 
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [End-points](#end-points)
 
+  
 ## Instalação
 
 - Clone o repositório:
@@ -35,4 +39,18 @@ python manage.py runserver
 ```
 - O aplicativo estará disponível em http://localhost:8000.
 
-  
+## End-points
+
+`GET api/storage-station/list`
+
+`GET, PUT api/storage-station/detail/<int:pk>`
+
+`GET api/operation-log/list`
+
+`GET api/operation-log/detail/<int:pk>`
+
+`PUT api/storage-station/<int:id>/percent/`
+
+`PUT api/pickup/<int:id>/request`
+
+`PUT api/pickup/<int:id>/confirm`
