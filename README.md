@@ -37,7 +37,7 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
-- O aplicativo estará disponível em http://localhost:8000.
+- O aplicativo estará disponível em http://localhost:8000/api
 
 ## End-points
 
