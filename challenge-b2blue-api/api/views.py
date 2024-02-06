@@ -1,5 +1,4 @@
 import json
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from .models import StorageStation, OperationLog
 from rest_framework.views import APIView
@@ -37,13 +36,13 @@ class ChangeOccupiedPercentView(APIView):
         storage_station = get_object_or_404(StorageStation, pk=id)
         serializer = StorageStationSerializer(storage_station, data=request.data, partial=True)
      
-        if serializer.is_valid() & serializer.validate_occupied_storage_percent(new_percent):
+        if serializer.is_valid() & isinstance(new_percent, int):
             StorageStationService.perform_operation(storage_station, f"Mudança na % de volume para {new_percent}")
             is_almost_full = StorageStationService.is_almost_full(new_percent)
             
             if is_almost_full:
-                message = f"A estação está quase cheia! O volume atual é de {storage_station.occupied_storage_percent}%. Foi solicitada uma coleta para a estação {storage_station.id}!"
                 storage_station.occupied_storage_percent = new_percent
+                message = f"A estação está quase cheia! O volume atual é de {storage_station.occupied_storage_percent}%. Foi solicitada uma coleta para a estação {storage_station.id}!"
                 serializer.save()
                 
                 return Response({'message': message, 'data': serializer.data, 'status': status.HTTP_207_MULTI_STATUS})
