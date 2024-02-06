@@ -43,14 +43,16 @@ python manage.py runserver
 
 `GET api/storage-station/list`
 
-`GET, PUT api/storage-station/detail/<int:pk>`
+`GET, PUT api/storage-station/detail/<pk>`
 
 `GET api/operation-log/list`
 
-`GET api/operation-log/detail/<int:pk>`
+`GET api/operation-log/detail/<pk>`
 
-`PUT api/storage-station/<int:id>/percent/`
+`PUT api/storage-station/<id>/percent/`
 
-`PUT api/pickup/<int:id>/request`
+`PUT api/pickup/<id>/request`
 
-`PUT api/pickup/<int:id>/confirm`
+`PUT api/pickup/<id>/confirm`
+
+- OBS: acessando as rotas pelo navegador, é possível realizar os teste via interface gráfica do Django REST Framework
